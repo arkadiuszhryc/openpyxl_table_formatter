@@ -15,6 +15,7 @@ def add_formatted_table_to_worksheet(
     index: bool = True,
     header: bool = True,
     style: str = "Medium 2",
+    columns_formats: list[str] | None = None,
 ) -> None:
     """Appends a pandas DataFrame to file using one of default MS Office formattings.
 
@@ -32,6 +33,8 @@ def add_formatted_table_to_worksheet(
         If header of DataFrame should be included.
     style: str, default: "Medium 2"
         Style of table, from the Office 365 standard templates.
+    columns_formats: list of str or None, default: None
+        List of formats for each column, should follow Office 365 format standard.
     """
     match style:
         case "Medium 1":
@@ -131,6 +134,10 @@ def add_formatted_table_to_worksheet(
                         row=current_row, column=column_number + start_column
                     )
                     current_cell.value = cell_value
+                    if (columns_formats is not None) and (
+                        len(columns_formats) == len(dataframe_row)
+                    ):
+                        current_cell.number_format = columns_formats[column_number]
                     if column_number == 0:
                         current_cell.border = Border(
                             top=Side(style="thin", color=border_color),
