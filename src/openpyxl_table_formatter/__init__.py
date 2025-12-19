@@ -64,6 +64,51 @@ def add_formatted_table_to_worksheet(
             even_row_fill_type = None
             even_row_fill_color = "00FFFFFF"
             border_color = "FFF1A983"
+        case "Medium 4":
+            header_fill_type = "solid"
+            header_fill_color = "FF196B24"
+            header_font_color = "FFFFFFFF"
+            odd_row_fill_type = "solid"
+            odd_row_fill_color = "FFC1F0C8"
+            even_row_fill_type = None
+            even_row_fill_color = "00FFFFFF"
+            border_color = "FF47D359"
+        case "Medium 5":
+            header_fill_type = "solid"
+            header_fill_color = "FF0F9ED5"
+            header_font_color = "FFFFFFFF"
+            odd_row_fill_type = "solid"
+            odd_row_fill_color = "FFCAEDFB"
+            even_row_fill_type = None
+            even_row_fill_color = "00FFFFFF"
+            border_color = "FF61CBF3"
+        case "Medium 6":
+            header_fill_type = "solid"
+            header_fill_color = "FFA02B93"
+            header_font_color = "FFFFFFFF"
+            odd_row_fill_type = "solid"
+            odd_row_fill_color = "FFF2CEEF"
+            even_row_fill_type = None
+            even_row_fill_color = "00FFFFFF"
+            border_color = "FFD86DCD"
+        case "Medium 7":
+            header_fill_type = "solid"
+            header_fill_color = "FF4EA72E"
+            header_font_color = "FFFFFFFF"
+            odd_row_fill_type = "solid"
+            odd_row_fill_color = "FFDAF2D0"
+            even_row_fill_type = None
+            even_row_fill_color = "00FFFFFF"
+            border_color = "FF8ED973"
+        case "Custom Red":
+            header_fill_type = "solid"
+            header_fill_color = "FFED4C37"
+            header_font_color = "FFFFFFFF"
+            odd_row_fill_type = "solid"
+            odd_row_fill_color = "FFFACEC8"
+            even_row_fill_type = None
+            even_row_fill_color = "00FFFFFF"
+            border_color = "FFF06E5C"
         case _:
             header_fill_type = None
             header_fill_color = "00FFFFFF"
