@@ -1,5 +1,5 @@
 import pandas as pd
-from openpyxl.styles import Border, Font, PatternFill, Side
+from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.worksheet.worksheet import Worksheet
 
@@ -16,6 +16,7 @@ def add_formatted_table_to_worksheet(
     header: bool = True,
     style: str = "Medium 2",
     columns_formats: list[str] | None = None,
+    columns_alignment: list[str] | None = None,
 ) -> None:
     """Appends a pandas DataFrame to file using one of default MS Office formattings.
 
@@ -34,7 +35,9 @@ def add_formatted_table_to_worksheet(
     style: str, default: "Medium 2"
         Style of table, from the Office 365 standard templates.
     columns_formats: list of str or None, default: None
-        List of formats for each column, should follow Office 365 format standard.
+        List of formats for each column, should follow Office 365 format standard, e.g. 'dd-mmm-yyyy'.
+    columns_formats: list of str or None, default: None
+            List of alignments for each column, should follow Office 365 standard, e.g. 'left', 'center', 'right'.
     """
     match style:
         case "Medium 1":
@@ -167,7 +170,13 @@ def add_formatted_table_to_worksheet(
                             bottom=Side(style="thin", color=border_color),
                         )
             else:
-                if header:
+                if header and index:
+                    is_odd_row = row_count % 2 == 0
+                    current_row = start_row + row_count - 1
+                elif header and not index:
+                    is_odd_row = row_count % 2 == 0
+                    current_row = start_row + row_count
+                elif not header and index:
                     is_odd_row = row_count % 2 == 1
                     current_row = start_row + row_count - 1
                 else:
@@ -182,6 +191,12 @@ def add_formatted_table_to_worksheet(
                         len(columns_formats) == len(dataframe_row)
                     ):
                         current_cell.number_format = columns_formats[column_number]
+                    if (columns_alignment is not None) and (
+                        len(columns_alignment) == len(dataframe_row)
+                    ):
+                        current_cell.alignment = Alignment(
+                            horizontal=columns_alignment[column_number]
+                        )
                     if column_number == 0:
                         current_cell.border = Border(
                             top=Side(style="thin", color=border_color),
