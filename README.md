@@ -6,3 +6,11 @@ Please note this package is still in early development and only 3 themes are ava
 - Medium 1 - grey accent
 - Medium 2 - blue accent
 - Medium 3 - orange accent
+
+## Instalation
+
+- with pip:
+`pip install openpyxl-table-formatter`
+
+- with uv:
+`uv add openpyxl-table-formatter`
