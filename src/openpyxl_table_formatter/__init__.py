@@ -5,7 +5,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 
 def main() -> None:
-    print("This file is intended to be imported as a module!")
+    pass
 
 
 def add_formatted_table_to_worksheet(
@@ -90,7 +90,6 @@ def add_formatted_table_to_worksheet(
         ):
             if dataframe_row == [None]:
                 continue
-            print(dataframe_row)
             if header and row_count == 0:
                 for column_number, cell_value in enumerate(dataframe_row):
                     current_cell = worksheet.cell(
